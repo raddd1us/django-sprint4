@@ -58,8 +58,6 @@ class PostDetailView(DetailView):
 
 
 class OnlyAuthorMixin:
-    """Пускает дальше только автора объекта, остальных — на страницу поста."""
-
     def dispatch(self, request, *args, **kwargs):
         if self.get_object().author != request.user:
             return redirect('blog:post_detail', post_id=kwargs['post_id'])
